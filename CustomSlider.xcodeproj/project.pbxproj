@@ -20,6 +20,7 @@
 		8433BF9B1B7237E400879180 /* OnWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 8433BF971B7237E400879180 /* OnWhite.png */; };
 		8433BF9D1B7247C400879180 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8433BF9C1B7247C400879180 /* AVFoundation.framework */; };
 		8441D0411B7288D500AC6978 /* MySong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8441D0401B7288D500AC6978 /* MySong.mp3 */; };
+		84AE877B1B73E18400852F4D /* CustomSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AE877A1B73E18400852F4D /* CustomSwitch.m */; };
 		E25E32CF1B453A1B007DA111 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E25E32CE1B453A1B007DA111 /* main.m */; };
 		E25E32D21B453A1B007DA111 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E25E32D11B453A1B007DA111 /* AppDelegate.m */; };
 		E25E32D51B453A1B007DA111 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E25E32D41B453A1B007DA111 /* ViewController.m */; };
@@ -55,6 +56,8 @@
 		8433BF971B7237E400879180 /* OnWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OnWhite.png; sourceTree = "<group>"; };
 		8433BF9C1B7247C400879180 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		8441D0401B7288D500AC6978 /* MySong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = MySong.mp3; sourceTree = "<group>"; };
+		84AE87791B73E18400852F4D /* CustomSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSwitch.h; sourceTree = "<group>"; };
+		84AE877A1B73E18400852F4D /* CustomSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomSwitch.m; sourceTree = "<group>"; };
 		E25E32C91B453A1B007DA111 /* CustomSlider.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomSlider.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E25E32CD1B453A1B007DA111 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E25E32CE1B453A1B007DA111 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -110,6 +113,31 @@
 			name = music;
 			sourceTree = "<group>";
 		};
+		84AE87771B73E07900852F4D /* imageSlider */ = {
+			isa = PBXGroup;
+			children = (
+				E25E32F61B45438E007DA111 /* background.png */,
+				E25E33001B454A6E007DA111 /* MaxSpeaker.png */,
+				8433BF711B7208EB00879180 /* caption.png */,
+				8433BF791B7217EB00879180 /* thumb1.png */,
+				8433BF7B1B7219F100879180 /* maxtrack1.png */,
+				8433BF831B721FC200879180 /* mintrack1.png */,
+				8433BF8E1B722B9B00879180 /* Speaker1.png */,
+				8433BF8F1B722B9B00879180 /* Speaker2.png */,
+				8433BF8D1B722B9B00879180 /* MuteSpeaker1.png */,
+			);
+			name = imageSlider;
+			sourceTree = "<group>";
+		};
+		84AE87781B73E0EB00852F4D /* CustomSwitch */ = {
+			isa = PBXGroup;
+			children = (
+				84AE87791B73E18400852F4D /* CustomSwitch.h */,
+				84AE877A1B73E18400852F4D /* CustomSwitch.m */,
+			);
+			name = CustomSwitch;
+			sourceTree = "<group>";
+		};
 		E25E32C01B453A1B007DA111 = {
 			isa = PBXGroup;
 			children = (
@@ -132,22 +160,15 @@
 		E25E32CB1B453A1B007DA111 /* CustomSlider */ = {
 			isa = PBXGroup;
 			children = (
+				84AE87771B73E07900852F4D /* imageSlider */,
 				8433BF9E1B72483C00879180 /* music */,
 				8433BF931B7237C400879180 /* onoff */,
-				8433BF8D1B722B9B00879180 /* MuteSpeaker1.png */,
-				8433BF8E1B722B9B00879180 /* Speaker1.png */,
-				8433BF8F1B722B9B00879180 /* Speaker2.png */,
-				8433BF831B721FC200879180 /* mintrack1.png */,
-				8433BF7B1B7219F100879180 /* maxtrack1.png */,
-				8433BF791B7217EB00879180 /* thumb1.png */,
-				8433BF711B7208EB00879180 /* caption.png */,
-				E25E33001B454A6E007DA111 /* MaxSpeaker.png */,
-				E25E32F61B45438E007DA111 /* background.png */,
 				E25E32D01B453A1B007DA111 /* AppDelegate.h */,
 				E25E32D11B453A1B007DA111 /* AppDelegate.m */,
 				E25E32D31B453A1B007DA111 /* ViewController.h */,
 				E25E32D41B453A1B007DA111 /* ViewController.m */,
 				E25E32D61B453A1B007DA111 /* Main.storyboard */,
+				84AE87781B73E0EB00852F4D /* CustomSwitch */,
 				E25E32D91B453A1B007DA111 /* Images.xcassets */,
 				E25E32DB1B453A1B007DA111 /* LaunchScreen.xib */,
 				E25E32CC1B453A1B007DA111 /* Supporting Files */,
@@ -297,6 +318,7 @@
 			files = (
 				E25E32D51B453A1B007DA111 /* ViewController.m in Sources */,
 				E25E32D21B453A1B007DA111 /* AppDelegate.m in Sources */,
+				84AE877B1B73E18400852F4D /* CustomSwitch.m in Sources */,
 				E25E32CF1B453A1B007DA111 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

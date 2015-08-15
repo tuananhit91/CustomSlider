@@ -33,6 +33,21 @@
                                     <action selector="onButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="0qn-AW-NJb"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dG9-zQ-PcA">
+                                <rect key="frame" x="163" y="458" width="74" height="64"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onoffabc:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="oA1-cw-pFk"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="moX-oI-QBm">
+                                <rect key="frame" x="425" y="425" width="124" height="64"/>
+                                <state key="normal" image="OffBlack.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.91283933080000002" green="0.91283933080000002" blue="0.91283933080000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -42,6 +57,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="onoffbutton" destination="dG9-zQ-PcA" id="SUg-9Y-avF"/>
                         <outlet property="slider" destination="Lz1-dA-AN1" id="u5x-4F-N7e"/>
                     </connections>
                 </viewController>
@@ -49,4 +65,7 @@
             </objects>
         </scene>
     </scenes>
+    <resources>
+        <image name="OffBlack.png" width="69" height="64"/>
+    </resources>
 </document>

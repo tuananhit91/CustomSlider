@@ -11,6 +11,7 @@
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UISlider *slider;
+@property (weak, nonatomic) IBOutlet UIButton *onoffbutton;
 
 @end
 
@@ -57,8 +58,15 @@
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:image];
     [self.slider addTarget:self action:@selector(adjustLableForSlider:) forControlEvents:UIControlEventValueChanged];
-    //[on addTarget:self action:@selector(onSound:) forControlEvents:UIControlEventTouchUpInside];
+  
+    //[on addTarget:self action:@selector(onSound) forControlEvents:UIControlEventTouchUpInside];
     [self creatCustomizeSwitch];
+    
+    [self.onoffbutton setImage:[UIImage imageNamed:@"OnBlack.png"] forState:normal];
+    
+}
+-(void)even{
+    NSLog(@"tappp");
 }
 
 - (void) adjustLableForSlider:(id)slider{
@@ -96,14 +104,20 @@
     view1.frame = CGRectMake(self.view.bounds.size.width / 4, 150, 200, 100);
     view1.backgroundColor = [UIColor groupTableViewBackgroundColor];
     [self.view addSubview:view1];
+    view1.userInteractionEnabled = true;
     
-    on = [[UIButton alloc] initWithFrame:CGRectMake(20, 20, 74, 60)];
-    [on setImage:[UIImage imageNamed:@"OnWhite.png"] forState:UIControlStateNormal];
+    on = [[UIButton alloc] initWithFrame:CGRectMake(20, 20, 72, 60)];
+    [on setImage:[UIImage imageNamed:@"OnBlack.png"] forState:UIControlStateNormal];
     [view1 addSubview:on];
+    on.userInteractionEnabled = true;
+    [on addTarget:self action:@selector(onSound) forControlEvents:UIControlEventTouchUpInside];
     
-    off = [[UIButton alloc] initWithFrame:CGRectMake(94, 20, 69, 64)];
-    [off setImage:[UIImage imageNamed:@"OffBlack.png"] forState:UIControlStateNormal];
+    off = [[UIButton alloc] initWithFrame:CGRectMake(90, 20, 72, 60)];
+    [off setImage:[UIImage imageNamed:@"OffWhite.png"] forState:UIControlStateNormal];
     [view1 addSubview:off];
+    off.userInteractionEnabled = true;
+    [off addTarget:self action:@selector(offSound) forControlEvents:UIControlEventTouchUpInside];
+    
 }
 
 - (void) playSound:(NSURL*) url{
@@ -112,12 +126,19 @@
     [player play];
 }
 
-- (void) onSound:(id)on{
+- (void) onSound{
     NSURL* soundPath = [[NSBundle mainBundle] URLForResource:@"MySong" withExtension:@"mp3"];
     [self playSound:soundPath];
+    [on setImage:[UIImage imageNamed:@"OnWhite.png"] forState:UIControlStateNormal];
+    [off setImage:[UIImage imageNamed:@"OffBlack.png"] forState:UIControlStateNormal];
     volumeTimer = [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(updateVolume) userInfo:nil repeats:YES];
 }
 
+- (void) offSound{
+    [player stop];
+    [on setImage:[UIImage imageNamed:@"OnBlack.png"] forState:UIControlStateNormal];
+    [off setImage:[UIImage imageNamed:@"OffWhite.png"] forState:UIControlStateNormal];
+}
 - (void) updateVolume{
     [player setVolume:self.slider.value];
 }
@@ -129,6 +150,13 @@
                                                  selector:@selector(updateVolume)
                                                  userInfo:nil
                                                   repeats:YES];
+}
+- (IBAction)onoffabc:(id)sender {
+    if ([self.onoffbutton.currentImage isEqual:[UIImage imageNamed:@"OnBlack.png"]]) {
+        [self.onoffbutton setImage:[UIImage imageNamed:@"OnWhite.png"] forState:normal];
+    }else {
+        [self.onoffbutton setImage:[UIImage imageNamed:@"OnBlack.png"] forState:normal];
+    }
 }
 
 - (IBAction)controlSlider:(id)sender {
