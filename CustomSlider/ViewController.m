@@ -8,10 +8,10 @@
 
 #import "ViewController.h"
 #import <AVFoundation/AVFoundation.h>
+#import "CustomSwitch.h"
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UISlider *slider;
-@property (weak, nonatomic) IBOutlet UIButton *onoffbutton;
 
 @end
 
@@ -23,9 +23,18 @@
     UIImageView* caption;
     UIView* view1;
     UIButton* on, *off;
+    CustomSwitch *mySwitch;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    mySwitch = [[CustomSwitch alloc] initWithFrame:CGRectMake(0, 0, 148, 64)];
+    mySwitch.center = CGPointMake(self.view.bounds.size.width *0.5, 120);
+    [mySwitch addTarget:self
+                 action:@selector(switchChange:)
+       forControlEvents:UIControlEventValueChanged];
+    
+    [self.view addSubview:mySwitch];
+    
     caption = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"caption.png"]];
     caption.frame = CGRectMake(42, self.slider.center.y - 30, 70, 50);
     label =[[UILabel alloc] initWithFrame:CGRectMake(12, 10, 45, 25)];
@@ -35,10 +44,11 @@
     label.textColor = [UIColor orangeColor];
     label.textAlignment = NSTextAlignmentCenter;
     caption.hidden = true;
+    
     NSString* string1 = [NSString stringWithFormat:@"%2.0f",self.slider.value];
     [label setText:string1];
-    [self.slider setThumbImage:[UIImage imageNamed:@"thumb1.png"] forState:UIControlStateNormal];
     
+    [self.slider setThumbImage:[UIImage imageNamed:@"thumb1.png"] forState:UIControlStateNormal];
     [self.slider setMaximumValueImage:[UIImage imageNamed:@"MuteSpeaker1.png"]];
     [self speakerChange:self.slider.value];
     
@@ -61,12 +71,22 @@
   
     //[on addTarget:self action:@selector(onSound) forControlEvents:UIControlEventTouchUpInside];
     [self creatCustomizeSwitch];
-    
-    [self.onoffbutton setImage:[UIImage imageNamed:@"OnBlack.png"] forState:normal];
-    
 }
--(void)even{
-    NSLog(@"tappp");
+
+- (void) switchChange:(CustomSwitch*) customSwitch {
+    NSLog(@"%d", customSwitch.value);
+    if (customSwitch.value == 1) {
+        NSURL* soundPath = [[NSBundle mainBundle] URLForResource:@"MySong" withExtension:@"mp3"];
+        [self playSound:soundPath];
+        volumeTimer = [NSTimer scheduledTimerWithTimeInterval:0.05
+                                                       target:self
+                                                     selector:@selector(updateVolume)
+                                                     userInfo:nil
+                                                      repeats:YES];
+
+    }else{
+        [player stop];
+    }
 }
 
 - (void) adjustLableForSlider:(id)slider{
@@ -150,13 +170,6 @@
                                                  selector:@selector(updateVolume)
                                                  userInfo:nil
                                                   repeats:YES];
-}
-- (IBAction)onoffabc:(id)sender {
-    if ([self.onoffbutton.currentImage isEqual:[UIImage imageNamed:@"OnBlack.png"]]) {
-        [self.onoffbutton setImage:[UIImage imageNamed:@"OnWhite.png"] forState:normal];
-    }else {
-        [self.onoffbutton setImage:[UIImage imageNamed:@"OnBlack.png"] forState:normal];
-    }
 }
 
 - (IBAction)controlSlider:(id)sender {
